@@ -54,6 +54,14 @@ with aba1:
             st.session_state["usuario"] = usuario_encontrado[2]
             st.session_state["funcao"] = usuario_encontrado[4]
 
+            if usuario_encontrado[2] == "Rubens01":
+
+                st.session_state["admin"] = True
+
+            else:
+
+                st.session_state["admin"] = False
+
             st.success(
                 f"Bem-vindo, {usuario_encontrado[1]}!"
             )
@@ -63,7 +71,6 @@ with aba1:
             st.error(
                 "Usuário ou senha inválidos."
             )
-
 # ======================
 # CADASTRO
 # ======================
