@@ -12,7 +12,8 @@ menu = st.sidebar.selectbox(
         "🏠 Início",
         "🔐 Login",
         "📊 Minha Comissão",
-        "📋 Meu Histórico"
+        "📋 Meu Histórico",
+        "👤 Meu Perfil"
     ]
 )
 
@@ -75,20 +76,6 @@ if menu == "🏠 Início":
 
     st.markdown("---")
 
-    st.subheader("📦 O que é Cubagem?")
-
-    st.info(
-        """
-        Cubagem é o volume total informado
-        nas entregas realizadas.
-
-        Utilize os valores informados pela empresa
-        para calcular sua comissão estimada.
-        """
-    )
-
-    st.markdown("---")
-
     st.subheader("🔒 Segurança")
 
     st.success(
@@ -97,28 +84,9 @@ if menu == "🏠 Início":
 
         ✅ Cada usuário vê apenas seus próprios dados
 
-        ✅ Nenhum usuário pode visualizar informações de outro usuário
-
         ✅ Histórico individual protegido
 
         ✅ Recuperação de senha disponível
-        """
-    )
-
-    st.markdown("---")
-
-    st.subheader("⚠️ Aviso")
-
-    st.warning(
-        """
-        Os valores apresentados são estimativas.
-
-        Os cálculos são realizados com base
-        nas informações fornecidas pelo usuário.
-
-        Pode haver pequenas diferenças em relação
-        aos valores oficiais da empresa devido
-        a arredondamentos ou regras internas.
         """
     )
 
@@ -132,27 +100,17 @@ if menu == "🏠 Início":
 
 elif menu == "🔐 Login":
 
-    exec(
-        open(
-            "login.py",
-            encoding="utf-8"
-        ).read()
-    )
+    exec(open("login.py", encoding="utf-8").read())
 
 elif menu == "📊 Minha Comissão":
 
-    exec(
-        open(
-            "dashboard.py",
-            encoding="utf-8"
-        ).read()
-    )
+    exec(open("dashboard.py", encoding="utf-8").read())
 
 elif menu == "📋 Meu Histórico":
 
-    exec(
-        open(
-            "historico.py",
-            encoding="utf-8"
-        ).read()
-    )
+    exec(open("historico.py", encoding="utf-8").read())
+
+elif menu == "👤 Meu Perfil":
+
+    exec(open("perfil.py", encoding="utf-8").read())
+
