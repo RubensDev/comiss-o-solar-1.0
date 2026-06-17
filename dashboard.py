@@ -81,25 +81,80 @@ with col3:
         "💰 Comissão",
         f"R$ {comissao_total:.2f}"
     )
+st.divider()
 
-# ==========================
-# META
-# ==========================
+st.subheader("📈 Evolução das Comissões")
 
-meta = 150
-
-progresso = min(
-    comissao_total / meta,
-    1.0
+cursor.execute(
+    """
+    SELECT
+        data,
+        comissao
+    FROM lancamentos
+    WHERE usuario_id=?
+    ORDER BY id
+    """,
+    (
+        st.session_state["id_usuario"],
+    )
 )
 
-st.subheader("🎯 Meta do Mês")
+grafico_comissao = cursor.fetchall()
 
-st.progress(progresso)
+if grafico_comissao:
 
-st.write(
-    f"R$ {comissao_total:.2f} de R$ {meta:.2f}"
+    df_grafico = pd.DataFrame(
+        grafico_comissao,
+        columns=[
+            "Data",
+            "Comissão"
+        ]
+    )
+
+    df_grafico = df_grafico.set_index(
+        "Data"
+    )
+
+    st.line_chart(
+        df_grafico
+    )
+    st.subheader("📦 Evolução da Cubagem")
+
+cursor.execute(
+    """
+    SELECT
+        data,
+        cubos
+    FROM lancamentos
+    WHERE usuario_id=?
+    ORDER BY id
+    """,
+    (
+        st.session_state["id_usuario"],
+    )
 )
+
+grafico_cubagem = cursor.fetchall()
+
+if grafico_cubagem:
+
+    df_cubagem = pd.DataFrame(
+        grafico_cubagem,
+        columns=[
+            "Data",
+            "Cubagem"
+        ]
+    )
+
+    df_cubagem = df_cubagem.set_index(
+        "Data"
+    )
+
+    st.bar_chart(
+        df_cubagem
+    )
+
+
 
 # ==========================
 # ESTATÍSTICAS
