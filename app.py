@@ -41,7 +41,7 @@ if menu == "🏠 Início":
         """
         ⬅️ PRIMEIRO ACESSO
 
-        Clique na seta ( > ) localizada
+        Clique na seta ( >> ) localizada
         no canto superior esquerdo da tela.
 
         Depois clique em:
