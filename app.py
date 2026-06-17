@@ -6,16 +6,36 @@ st.set_page_config(
     layout="wide"
 )
 
+# ==========================
+# MENU NORMAL
+# ==========================
+
+menu_opcoes = [
+    "🏠 Início",
+    "🔐 Login",
+    "📊 Minha Comissão",
+    "📋 Meu Histórico",
+    "👤 Meu Perfil"
+]
+
+# ==========================
+# MENU ADMIN
+# ==========================
+
+if st.session_state.get("admin"):
+
+    menu_opcoes.append(
+        "👑 Administração"
+    )
+
 menu = st.sidebar.selectbox(
     "📌 Menu",
-    [
-        "🏠 Início",
-        "🔐 Login",
-        "📊 Minha Comissão",
-        "📋 Meu Histórico",
-        "👤 Meu Perfil"
-    ]
+    menu_opcoes
 )
+
+# ==========================
+# INÍCIO
+# ==========================
 
 if menu == "🏠 Início":
 
@@ -98,19 +118,67 @@ if menu == "🏠 Início":
         """
     )
 
+# ==========================
+# LOGIN
+# ==========================
+
 elif menu == "🔐 Login":
 
-    exec(open("login.py", encoding="utf-8").read())
+    exec(
+        open(
+            "login.py",
+            encoding="utf-8"
+        ).read()
+    )
+
+# ==========================
+# DASHBOARD
+# ==========================
 
 elif menu == "📊 Minha Comissão":
 
-    exec(open("dashboard.py", encoding="utf-8").read())
+    exec(
+        open(
+            "dashboard.py",
+            encoding="utf-8"
+        ).read()
+    )
+
+# ==========================
+# HISTÓRICO
+# ==========================
 
 elif menu == "📋 Meu Histórico":
 
-    exec(open("historico.py", encoding="utf-8").read())
+    exec(
+        open(
+            "historico.py",
+            encoding="utf-8"
+        ).read()
+    )
+
+# ==========================
+# PERFIL
+# ==========================
 
 elif menu == "👤 Meu Perfil":
 
-    exec(open("perfil.py", encoding="utf-8").read())
+    exec(
+        open(
+            "perfil.py",
+            encoding="utf-8"
+        ).read()
+    )
 
+# ==========================
+# ADMIN
+# ==========================
+
+elif menu == "👑 Administração":
+
+    exec(
+        open(
+            "admin.py",
+            encoding="utf-8"
+        ).read()
+    )
