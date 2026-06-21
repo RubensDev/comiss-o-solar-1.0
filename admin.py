@@ -306,3 +306,18 @@ if dados:
 st.success(
     "Sistema Administrativo Online"
 )
+st.divider()
+
+st.subheader("🔍 Diagnóstico do Banco")
+
+cursor.execute("""
+SELECT
+id,
+nome,
+usuario
+FROM usuarios
+""")
+
+usuarios_debug = cursor.fetchall()
+
+st.write(usuarios_debug)
